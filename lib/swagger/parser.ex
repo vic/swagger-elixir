@@ -1,23 +1,23 @@
 defmodule Swagger.Parser do
 
-	def parse_file!(filename) do
-		parse_file(filename)
+  def parse_file!(filename) do
+    parse_file(filename)
     |> case do
       {:error, message} -> raise RuntimeError, message: message
       {:ok, swagger} -> swagger
     end
-	end
-
-	def parse_file(filename) do
-    filename |> parser |> parse(filename)
-	end
-
-  defp parser(filename) do
-    filename |> Path.extname |> String.downcase |> file_parser
   end
 
-  defp parse({:error, _} = error, _), do: error
-  defp parse({:ok, parser}, filename) do
+  def parse_file(filename) do
+    filename |> guess_parser_from_ext |> read_file(filename)
+  end
+
+  defp guess_parser_from_ext(filename) do
+    filename |> Path.extname |> String.downcase |> ext_parser
+  end
+
+  defp read_file({:error, _} = error, _), do: error
+  defp read_file({:ok, parser}, filename) do
     filename
     |> File.read()
     |> case do
@@ -26,10 +26,10 @@ defmodule Swagger.Parser do
     end
   end
 
-	defp file_parser(".yaml"), do: {:ok, Swagger.Parser.YAML}
-  defp file_parser(".json"), do: {:ok, Swagger.Parser.JSON}
-  defp file_parser(ext) do
-    {:error, "Dont know how to parse swagger definition from file with extension `#{ext}`"}
+  defp ext_parser(".yaml"), do: {:ok, __MODULE__.YAML}
+  defp ext_parser(".json"), do: {:ok, __MODULE__.JSON}
+  defp ext_parser(ext) do
+    {:error, "Unknown swagger file extension `#{ext}`"}
   end
 
   defmodule YAML do
@@ -39,9 +39,7 @@ defmodule Swagger.Parser do
   end
 
   defmodule JSON do
-    def parse(json) do
-      Poison.Parser.parse(json)
-    end
+    defdelegate parse(json), to: Poison.Parser
   end
 
 end
