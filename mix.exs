@@ -14,7 +14,7 @@ defmodule Swagger.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger]]
+    [applications: [:logger, :yaml_elixir]]
   end
 
   # Dependencies can be Hex packages:
@@ -29,6 +29,7 @@ defmodule Swagger.Mixfile do
   defp deps do
    [{:poison, "~> 1.5"},
     {:yaml_elixir, "~> 1.0.0"},
+    {:yamerl, github: "yakaz/yamerl"},
     {:mix_test_watch, "~> 0.2", only: :dev},
     {:credo, "~> 0.1.9", only: :dev},
     {:cowboy, "~> 1.0"}]

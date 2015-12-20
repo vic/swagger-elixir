@@ -6,4 +6,5 @@
   "mix_test_watch": {:hex, :mix_test_watch, "0.2.4"},
   "poison": {:hex, :poison, "1.5.0"},
   "ranch": {:hex, :ranch, "1.2.0"},
+  "yamerl": {:git, "https://github.com/yakaz/yamerl.git", "ae810a808817d9482b4628ae3e20d746e3729fe0", []},
   "yaml_elixir": {:hex, :yaml_elixir, "1.0.0"}}
