@@ -1,0 +1,2 @@
+defmodule Swagger do
+end
