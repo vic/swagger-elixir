@@ -26,6 +26,7 @@ defmodule Swagger.Parser do
     end
   end
 
+  defp ext_parser(".yml"),  do: {:ok, __MODULE__.YAML}
   defp ext_parser(".yaml"), do: {:ok, __MODULE__.YAML}
   defp ext_parser(".json"), do: {:ok, __MODULE__.JSON}
   defp ext_parser(ext) do
