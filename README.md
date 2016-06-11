@@ -1,5 +1,7 @@
 # Swagger
 
+*Work in progress*
+
 Generate elixir client/server implementation from a [swagger](http://swagger.io/) spec file.
 
 ## Installation
