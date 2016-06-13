@@ -52,7 +52,7 @@ defmodule Swagger.Client.Generator do
   defp defparam(operation, namespace, schema) do
     name = Schema.op_params_module(operation, namespace)
     {name, quote do
-      defstruct []
+      use Params.Schema, %{}
     end}
   end
 
@@ -67,7 +67,6 @@ defmodule Swagger.Client.Generator do
     params = Schema.op_req_params(operation, namespace, schema)
     quote do
       def request(unquote_splicing(params)) do
-        1
       end
     end
   end
