@@ -1,5 +1,10 @@
 defmodule Swagger.Parser do
 
+  def parse_yaml_string!(string) do
+    {:ok, parsed} = __MODULE__.YAML.parse(string)
+    parsed
+  end
+
   def parse_file!(filename) do
     parse_file(filename)
     |> case do
