@@ -18,5 +18,5 @@ defmodule Swagger.ParserTest do
     json = Parser.parse_file!("examples/minimal.json")
     assert ^yaml = json
   end
-	
+
 end
