@@ -1,9 +1,7 @@
 defmodule Swagger.Client do
 
   defmacro __using__(schema) do
-    quote do
-      unquote(defmodules(__CALLER__.module, schema))
-    end
+    defmodules(__CALLER__.module, schema)
   end
 
   def modules(ns, schema) do
