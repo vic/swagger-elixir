@@ -28,7 +28,7 @@ defmodule Swagger.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
    [{:poison, "~> 1.5"},
-    {:yaml_elixir, "~> 1.0.0"},
+    {:yaml_elixir, "~> 1.2.0"},
     {:yamerl, github: "yakaz/yamerl"},
     {:mix_test_watch, "~> 0.2", only: :dev},
     {:credo, "~> 0.1.9", only: :dev},
